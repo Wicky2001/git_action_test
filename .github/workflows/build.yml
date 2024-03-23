@@ -2,7 +2,7 @@ name: Build React App
 
 on:
   push:
-    branches: [main] # Replace 'main' with your branch name if needed
+    branches: [master] # Replace 'main' with your branch name if needed
 
 jobs:
   build:
