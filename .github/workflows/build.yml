@@ -1,0 +1,36 @@
+name: Build React App
+
+on:
+  push:
+    branches: [main] # Replace 'main' with your branch name if needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # You can choose other runners (e.g., macOS)
+
+    steps:
+      # In the context of GitHub Actions, "checking out the repository code"
+      # means retrieving a copy of the code from your GitHub repository and making it
+      # available within the virtual environment where the workflow is running.
+      - uses: actions/checkout@v3 # Checkout the repository code
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install # Or yarn install, depending on your package manager
+
+      - name: Test
+        run: npm test
+
+      - name: Build the app
+        run: npm run build # Or yarn build
+
+
+    #   - name: Upload build artifacts
+    #     uses: actions/upload-artifact@v3
+    #     with:
+    #       name: build-artifacts
+    #       path: dist # Replace with your build output directory if different
